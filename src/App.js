@@ -1,5 +1,6 @@
-import { useState, Fragment } from "react";
-import "./App.scss";
+import { useState } from "react";
+
+import Layout from "./components/Layout/Layout";
 import ItemList from "./components/Items/ItemList";
 import NewItem from "./components/NewItem/NewItem";
 
@@ -15,10 +16,10 @@ function App() {
   };
 
   return (
-    <Fragment>
+    <Layout>
       <NewItem onAddItem={addItemHandler} />
       <ItemList items={list} />
-    </Fragment>
+    </Layout>
   );
 }
 
