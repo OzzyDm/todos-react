@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import "./App.scss";
-import ItemList from "./components/NewItem/ItemList";
+import ItemList from "./components/Items/ItemList";
 import NewItem from "./components/NewItem/NewItem";
 
 function App() {
@@ -15,10 +15,10 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <Fragment>
       <NewItem onAddItem={addItemHandler} />
       <ItemList items={list} />
-    </div>
+    </Fragment>
   );
 }
 
