@@ -18,6 +18,7 @@ function App() {
     <div className="App">
       <NewItem onAddItem={addItemHandler} />
       <ItemList items={list} />
+      <h1>gnaskdgnksag</h1>
     </div>
   );
 }
