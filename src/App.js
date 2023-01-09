@@ -1,6 +1,7 @@
 import { useState } from "react";
-import "./App.scss";
-import ItemList from "./components/NewItem/ItemList";
+
+import Layout from "./components/Layout/Layout";
+import ItemList from "./components/Items/ItemList";
 import NewItem from "./components/NewItem/NewItem";
 
 function App() {
@@ -15,11 +16,10 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <Layout>
       <NewItem onAddItem={addItemHandler} />
       <ItemList items={list} />
-      <h1>gnaskdgnksag</h1>
-    </div>
+    </Layout>
   );
 }
 
