@@ -1,12 +1,14 @@
+import ItemCard from "./ItemCard";
+
 function ItemList(props) {
   return (
     <ul>
       {props.items.map((item) => (
-        <li key={item.id} id={item.id}>
+        <ItemCard key={item.id} id={item.id}>
           {item.text}
-          <button>remove</button>
           <button>completed</button>
-        </li>
+          <button onClick={props.onRemoveItem}>remove</button>
+        </ItemCard>
       ))}
     </ul>
   );

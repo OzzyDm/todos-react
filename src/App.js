@@ -8,8 +8,8 @@ function App() {
   const [list, setList] = useState([]);
 
   const addItemHandler = (enteredText) => {
-    setList((prevGoals) => {
-      const updatedList = [...prevGoals];
+    setList((prevItems) => {
+      const updatedList = [...prevItems];
       updatedList.unshift({ text: enteredText, id: Math.random().toString() });
       return updatedList;
     });
