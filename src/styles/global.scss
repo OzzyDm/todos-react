@@ -19,6 +19,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
   font-size: main.$default-font-size;
+  background-color: main.$color-primary;
+  color: main.$color-secondary;
 }
 
 #root {
@@ -31,4 +33,9 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+  transition: all 0.4s;
+
+  &:hover {
+    color: main.$color-tertiary;
+  }
 }
