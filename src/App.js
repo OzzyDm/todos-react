@@ -15,6 +15,8 @@ function App() {
     });
   };
 
+  console.log(list);
+
   return (
     <Layout>
       <NewItem onAddItem={addItemHandler} />
