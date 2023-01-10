@@ -1,11 +1,11 @@
+@use "../../styles/main.scss";
+
 .footer {
-  display: flex;
+  @include main.center;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   margin: 1rem;
 
   .heart {
-    color: #e31b23;
+    color: main.$color-tertiary;
   }
 }

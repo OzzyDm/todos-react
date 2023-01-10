@@ -1,4 +1,4 @@
-import classes from "./NewItem.module.scss";
+import styles from "./NewItem.module.scss";
 
 function NewItem() {
   return <div>NewItem</div>;

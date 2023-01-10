@@ -1,8 +1,8 @@
-import classes from "./Footer.module.scss";
+import styles from "./Footer.module.scss";
 
 function Footer() {
   return (
-    <footer className={classes.footer}>
+    <footer className={styles.footer}>
       <span>
         Copyright &#169;{" "}
         <a
@@ -22,7 +22,7 @@ function Footer() {
         </a>
       </span>
       <span>
-        Made with <span className={classes.heart}>&#10084;</span>
+        Made with <span className={styles.heart}>&#10084;</span>
       </span>
     </footer>
   );
