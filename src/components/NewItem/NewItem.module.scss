@@ -1,0 +1,54 @@
+@use "../../styles/main";
+
+.form {
+  @include main.center;
+  width: 60vw;
+  height: 10rem;
+  padding-bottom: 3rem;
+
+  &:focus-within .input {
+    outline: none;
+    width: 50vw;
+    border-bottom: 1px solid main.$color-tertiary;
+    transform: translateY(2rem);
+
+    &::placeholder {
+      opacity: 0;
+    }
+  }
+
+  &:focus-within .button {
+    font-size: 4rem;
+    color: main.$color-tertiary;
+    transform: translateY(2rem);
+  }
+}
+
+.input {
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  color: main.$color-secondary;
+  border-bottom: 1px solid main.$color-tertiary-light;
+  width: 16rem;
+  transition: all 0.4s;
+
+  &::placeholder {
+    color: main.$color-secondary-dark;
+    opacity: 1;
+    padding-left: 1rem;
+    transition: all 0.2s;
+  }
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+  font-size: 3rem;
+  color: main.$color-tertiary-light;
+  transition: all 0.2s;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
