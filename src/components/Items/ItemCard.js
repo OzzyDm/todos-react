@@ -1,9 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ItemContext } from "../../App";
 import styles from "./ItemCard.module.scss";
 
 function ItemCard(props) {
   const listState = useContext(ItemContext);
+  const [isCompleted, setIsCompleted] = useState(false);
+
+  const completeHandler = () => {
+    setIsCompleted(!isCompleted);
+  };
 
   const removeItemHandler = () => {
     listState.setList((previousState) => {
@@ -13,8 +18,11 @@ function ItemCard(props) {
 
   return (
     <li className={styles.card}>
-      <p>{props.text}</p>
-      <button>completed</button>
+      <p className={isCompleted ? styles.text : ""}>{props.text}</p>
+      <button>edit</button>
+      <button onClick={completeHandler}>
+        {isCompleted ? "undo" : "completed"}
+      </button>
       <button onClick={removeItemHandler}>remove</button>
     </li>
   );
