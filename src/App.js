@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { createContext, useState } from "react";
 
 import Layout from "./components/Layout/Layout";
 import ItemList from "./components/Items/ItemList";
 import NewItem from "./components/NewItem/NewItem";
+
+export const ItemContext = createContext();
 
 function App() {
   const [list, setList] = useState([]);
@@ -18,10 +20,12 @@ function App() {
   console.log(list);
 
   return (
-    <Layout>
-      <NewItem onAddItem={addItemHandler} />
-      <ItemList items={list} />
-    </Layout>
+    <ItemContext.Provider value={{ list: list, setList: setList }}>
+      <Layout>
+        <NewItem onAddItem={addItemHandler} />
+        <ItemList items={list} />
+      </Layout>
+    </ItemContext.Provider>
   );
 }
 
