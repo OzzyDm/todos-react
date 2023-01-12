@@ -1,15 +1,19 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ItemContext } from "../../App";
 import styles from "./ItemCard.module.scss";
-import { AiFillEdit, AiOutlineCheck, AiOutlineUndo } from "react-icons/ai";
+import { AiFillEdit, AiOutlineCheck } from "react-icons/ai";
 import { BsFillTrashFill } from "react-icons/bs";
 
 function ItemCard(props) {
   const listState = useContext(ItemContext);
-  const [isCompleted, setIsCompleted] = useState(false);
 
   const completeHandler = () => {
-    setIsCompleted(!isCompleted);
+    listState.list.find((item) => item.id === props.id);
+    const itemIndex = listState.list.findIndex((item) => item.id === props.id);
+    listState.setList((previousState) => {
+      previousState[itemIndex].completed = true;
+      return [...previousState];
+    });
   };
 
   const removeItemHandler = () => {
@@ -20,13 +24,13 @@ function ItemCard(props) {
 
   return (
     <li className={styles.card}>
-      <p className={isCompleted ? styles.text : ""}>{props.text}</p>
+      <p className={styles}>{props.text}</p>
       <div>
         <button className={styles.button}>
           <AiFillEdit />
         </button>
         <button onClick={completeHandler} className={styles.button}>
-          {isCompleted ? <AiOutlineUndo /> : <AiOutlineCheck />}
+          <AiOutlineCheck />
         </button>
         <button onClick={removeItemHandler} className={styles.button}>
           <BsFillTrashFill />

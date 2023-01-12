@@ -5,9 +5,11 @@ function ItemList(props) {
   return (
     <div>
       <ul className={styles.list}>
-        {props.items.map((item) => (
-          <ItemCard key={item.id} id={item.id} text={item.text} />
-        ))}
+        {props.items
+          .filter((item) => item.completed === false)
+          .map((item) => (
+            <ItemCard key={item.id} id={item.id} text={item.text} />
+          ))}
       </ul>
     </div>
   );

@@ -3,6 +3,7 @@ import { createContext, useState } from "react";
 import Layout from "./components/Layout/Layout";
 import ItemList from "./components/Items/ItemList";
 import NewItem from "./components/NewItem/NewItem";
+import CompletedItems from "./components/Items/CompletedItems";
 
 export const ItemContext = createContext();
 
@@ -12,7 +13,11 @@ function App() {
   const addItemHandler = (enteredText) => {
     setList((prevItems) => {
       const updatedList = [...prevItems];
-      updatedList.push({ text: enteredText, id: Math.random().toString() });
+      updatedList.push({
+        text: enteredText,
+        id: crypto.randomUUID(),
+        completed: false,
+      });
       return updatedList;
     });
   };
@@ -24,6 +29,7 @@ function App() {
       <Layout>
         <NewItem onAddItem={addItemHandler} />
         <ItemList items={list} />
+        <CompletedItems items={list} />
       </Layout>
     </ItemContext.Provider>
   );
