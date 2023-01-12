@@ -1,11 +1,17 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ItemContext } from "../../App";
 import styles from "./ItemCard.module.scss";
-import { AiFillEdit, AiOutlineCheck } from "react-icons/ai";
+import { AiFillEdit, AiOutlineCheck, AiOutlineUndo } from "react-icons/ai";
 import { BsFillTrashFill } from "react-icons/bs";
+import "aos/dist/aos.css";
+import Aos from "aos";
 
 function ItemCard(props) {
   const listState = useContext(ItemContext);
+
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
 
   const completeHandler = () => {
     listState.list.find((item) => item.id === props.id);
@@ -23,7 +29,7 @@ function ItemCard(props) {
   };
 
   return (
-    <li className={styles.card}>
+    <li className={styles.card} data-aos="fade-down">
       <p className={styles}>{props.text}</p>
       <div>
         <button className={styles.button}>
