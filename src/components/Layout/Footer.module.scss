@@ -3,7 +3,7 @@
 .footer {
   @include main.center;
   flex-direction: column;
-  margin: 1rem;
+  padding: 1rem;
 
   .heart {
     color: main.$color-tertiary;

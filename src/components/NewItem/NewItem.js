@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 import { AiOutlinePlus } from "react-icons/ai";
 
@@ -6,35 +6,59 @@ import styles from "./NewItem.module.scss";
 
 function NewItem(props) {
   const formRef = useRef();
+  const [enteredInput, setEnteredInput] = useState("");
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
-    const enteredValue = formRef.current.newItem.value;
 
     // check if empty or includes only spaces
-    if (enteredValue && enteredValue.replace(/ /g, "")) {
-      props.onAddItem(enteredValue);
+    if (enteredInput && enteredInput.replace(/ /g, "")) {
+      props.onAddItem(enteredInput);
     }
-    formRef.current.reset();
+    setEnteredInput("");
+    formRef.current.newItem.focus();
+  };
+
+  const onChangeHandler = (event) => {
+    setEnteredInput(event.target.value);
+  };
+
+  const onBlurHandler = (event) => {
+    setEnteredInput(event.target.value);
+    if (enteredInput) {
+      formRef.current.newItem.focus();
+    }
+  };
+
+  const focusOnClick = () => {
     formRef.current.newItem.focus();
   };
 
   return (
     <form onSubmit={formSubmitHandler} ref={formRef} className={styles.form}>
       <label htmlFor="newItem" hidden>
-        New Item
+        Add a new item
       </label>
+      <button type="submit" className={styles.submitButton}>
+        <AiOutlinePlus />
+      </button>
+      <button
+        type="button"
+        className={styles.focusButton}
+        onClick={focusOnClick}
+      >
+        Add a new item
+      </button>
       <input
         id="newItem"
         type="text"
-        placeholder="Add a new item"
         autoComplete="off"
+        spellCheck="false"
+        value={enteredInput}
         className={styles.input}
+        onChange={onChangeHandler}
+        onBlur={onBlurHandler}
       />
-
-      <button type="submit" className={styles.button}>
-        <AiOutlinePlus />
-      </button>
     </form>
   );
 }

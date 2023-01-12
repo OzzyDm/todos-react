@@ -2,53 +2,79 @@
 
 .form {
   @include main.center;
-  width: 60vw;
+  flex-direction: column;
+  width: 20rem;
   height: 10rem;
-  padding-bottom: 3rem;
+  margin: 1rem 0 4rem;
 
-  &:focus-within .input {
-    outline: none;
-    width: 50vw;
-    border-bottom: 1px solid main.$color-tertiary;
-    transform: translateY(2rem);
+  @media (hover: hover) {
+    &:hover {
+      .input {
+        width: 16rem;
+        visibility: visible;
+      }
 
-    &::placeholder {
-      opacity: 0;
+      .submitButton {
+        transform: rotate(90deg);
+      }
     }
   }
 
-  &:focus-within .button {
-    font-size: 4rem;
-    color: main.$color-tertiary;
-    transform: translateY(2rem);
+  &:focus-within {
+    width: 100%;
+
+    .submitButton {
+      transform: translateY(1.5rem) rotate(180deg);
+    }
+
+    .focusButton {
+      opacity: 0;
+      z-index: -99;
+      transform: translateY(1.5rem);
+    }
+
+    .input {
+      visibility: visible;
+      transform: translateY(2rem);
+      color: main.$color-secondary;
+      outline: none;
+      width: 70%;
+      cursor: text;
+    }
   }
+}
+
+.submitButton {
+  @include main.center;
+  background-color: transparent;
+  border: none;
+  font-size: 4rem;
+  color: main.$color-tertiary-light;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.focusButton {
+  background-color: transparent;
+  border: none;
+  color: main.$color-secondary;
+  font-size: 2rem;
+  opacity: 1;
+  user-select: none;
+  z-index: 99;
+  transition: all 0.4s;
+  cursor: pointer;
 }
 
 .input {
   background-color: transparent;
   border: none;
   font-size: 2rem;
-  color: main.$color-secondary;
+  color: transparent;
   border-bottom: 1px solid main.$color-tertiary-light;
-  width: 16rem;
+  visibility: hidden;
+  width: 0;
+  transform: translateY(-2rem);
+  cursor: pointer;
   transition: all 0.4s;
-
-  &::placeholder {
-    color: main.$color-secondary-dark;
-    opacity: 1;
-    padding-left: 1rem;
-    transition: all 0.2s;
-  }
-}
-
-.button {
-  background-color: transparent;
-  border: none;
-  font-size: 3rem;
-  color: main.$color-tertiary-light;
-  transition: all 0.2s;
-
-  &:hover {
-    cursor: pointer;
-  }
 }
