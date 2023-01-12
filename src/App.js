@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect, useRef } from "react";
 
 import Layout from "./components/Layout/Layout";
 import ItemList from "./components/Items/ItemList";
@@ -9,6 +9,23 @@ export const ItemContext = createContext();
 
 function App() {
   const [list, setList] = useState([]);
+
+  const isMounted = useRef(false);
+
+  useEffect(() => {
+    const listLocal = JSON.parse(localStorage.getItem("list"));
+    if (listLocal) {
+      setList(listLocal);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isMounted.current) {
+      localStorage.setItem("list", JSON.stringify(list));
+    } else {
+      isMounted.current = true;
+    }
+  }, [list]);
 
   const addItemHandler = (enteredText) => {
     setList((prevItems) => {
