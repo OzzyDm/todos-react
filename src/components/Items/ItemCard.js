@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import { ItemContext } from "../../App";
 import styles from "./ItemCard.module.scss";
+import { AiFillEdit, AiOutlineCheck, AiOutlineUndo } from "react-icons/ai";
+import { BsFillTrashFill } from "react-icons/bs";
 
 function ItemCard(props) {
   const listState = useContext(ItemContext);
@@ -19,11 +21,17 @@ function ItemCard(props) {
   return (
     <li className={styles.card}>
       <p className={isCompleted ? styles.text : ""}>{props.text}</p>
-      <button>edit</button>
-      <button onClick={completeHandler}>
-        {isCompleted ? "undo" : "completed"}
-      </button>
-      <button onClick={removeItemHandler}>remove</button>
+      <div>
+        <button className={styles.button}>
+          <AiFillEdit />
+        </button>
+        <button onClick={completeHandler} className={styles.button}>
+          {isCompleted ? <AiOutlineUndo /> : <AiOutlineCheck />}
+        </button>
+        <button onClick={removeItemHandler} className={styles.button}>
+          <BsFillTrashFill />
+        </button>
+      </div>
     </li>
   );
 }

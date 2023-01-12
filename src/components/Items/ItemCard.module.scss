@@ -1,3 +1,24 @@
+@use "../../styles/main";
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  width: 60vw;
+}
+
 .text {
   text-decoration-line: line-through;
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+  font-size: 3rem;
+  color: main.$color-tertiary-light;
+  transition: all 0.2s;
+
+  &:hover {
+    cursor: pointer;
+    color: main.$color-tertiary-dark;
+  }
 }

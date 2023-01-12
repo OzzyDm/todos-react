@@ -12,7 +12,7 @@ function App() {
   const addItemHandler = (enteredText) => {
     setList((prevItems) => {
       const updatedList = [...prevItems];
-      updatedList.unshift({ text: enteredText, id: Math.random().toString() });
+      updatedList.push({ text: enteredText, id: Math.random().toString() });
       return updatedList;
     });
   };
