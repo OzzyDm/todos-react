@@ -47,7 +47,7 @@ function NewItem(props) {
         className={styles.focusButton}
         onClick={focusOnClick}
       >
-        Add a new item
+        What needs to be done?
       </button>
       <input
         id="newItem"

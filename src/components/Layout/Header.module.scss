@@ -1,0 +1,11 @@
+@use "../../styles/main.scss";
+
+.header {
+  font-size: 4rem;
+  color: lighten(main.$color-primary-light, 5%);
+  font-weight: 400;
+
+  h1 {
+    margin: 5rem 0 3rem;
+  }
+}

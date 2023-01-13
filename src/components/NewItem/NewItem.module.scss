@@ -3,14 +3,14 @@
 .form {
   @include main.center;
   flex-direction: column;
-  width: 20rem;
+  min-width: 40rem;
   height: 10rem;
-  margin: 1rem 0 4rem;
+  margin: 1rem 0 5rem;
 
   @media (hover: hover) {
     &:hover {
       .input {
-        width: 16rem;
+        width: 24rem;
         visibility: visible;
       }
 
@@ -35,7 +35,7 @@
 
     .input {
       visibility: visible;
-      transform: translateY(2rem);
+      transform: translateY(1.5rem);
       color: main.$color-secondary;
       outline: none;
       width: 70%;
@@ -52,6 +52,7 @@
   color: main.$color-tertiary-light;
   cursor: pointer;
   transition: all 0.4s;
+  margin-bottom: 1rem;
 }
 
 .focusButton {

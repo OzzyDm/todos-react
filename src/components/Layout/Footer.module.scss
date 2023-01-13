@@ -4,8 +4,21 @@
   @include main.center;
   flex-direction: column;
   padding: 1rem;
+  color: lighten(main.$color-primary-light, 10%);
+  font-weight: 500;
+
+  &:hover {
+    .heart {
+      color: main.$color-tertiary-light;
+    }
+
+    a {
+      color: main.$color-tertiary-light;
+    }
+  }
 
   .heart {
-    color: main.$color-tertiary;
+    color: rgba(main.$color-tertiary-light, 0.5);
+    transition: all 0.4s;
   }
 }

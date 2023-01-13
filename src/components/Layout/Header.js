@@ -1,7 +1,9 @@
+import styles from "./Header.module.scss";
+
 function Header() {
   return (
-    <header>
-      <h1>Shopping List</h1>
+    <header className={styles.header}>
+      <h1>Todos</h1>
     </header>
   );
 }

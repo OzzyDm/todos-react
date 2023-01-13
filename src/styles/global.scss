@@ -36,6 +36,10 @@ a {
   transition: all 0.4s;
 
   &:hover {
-    color: main.$color-tertiary;
+    color: main.$color-tertiary-light;
   }
+}
+
+h1 {
+  font-weight: inherit;
 }
