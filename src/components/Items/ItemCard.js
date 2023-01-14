@@ -9,6 +9,7 @@ import Aos from "aos";
 function ItemCard(props) {
   const listState = useContext(ItemContext);
   const [isEditing, setIsEditing] = useState(false);
+  const [value, setValue] = useState(props.text);
   const text = useRef();
 
   useEffect(() => {
@@ -30,31 +31,42 @@ function ItemCard(props) {
     });
   };
 
-  const editHandler = (e) => {
-    console.log(e.target.textContent);
+  const submitHandler = (e) => {
+    e.preventDefault();
+    setIsEditing(!isEditing);
     listState.list.find((item) => item.id === props.id);
     const itemIndex = listState.list.findIndex((item) => item.id === props.id);
     listState.setList((previousState) => {
-      previousState[itemIndex].text = e.target.textContent;
+      previousState[itemIndex].text = value;
       return [...previousState];
     });
   };
 
   const onEditHandler = () => {
     setIsEditing(!isEditing);
-    text.current.value.focus();
-    console.log(text);
+    text.current.focus();
   };
+
+  useEffect(() => {
+    if (isEditing) {
+      text.current.focus();
+    }
+  }, [isEditing]);
 
   return (
     <li className={styles.card} data-aos="fade-down">
-      <input
-        onInput={editHandler}
-        className={styles}
-        value={props.text}
-        disabled={!isEditing}
-        ref={text}
-      ></input>
+      <form onSubmit={submitHandler}>
+        <input
+          className={styles}
+          value={value}
+          disabled={!isEditing}
+          ref={text}
+          onChange={(e) => {
+            setValue(e.target.value);
+          }}
+          onBlur={submitHandler}
+        ></input>
+      </form>
       <div>
         <button className={styles.button} onClick={onEditHandler}>
           <AiFillEdit />
