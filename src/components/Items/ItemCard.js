@@ -3,18 +3,12 @@ import { ItemContext } from "../../App";
 import styles from "./ItemCard.module.scss";
 import { AiFillEdit, AiOutlineCheck, AiOutlineUndo } from "react-icons/ai";
 import { BsFillTrashFill } from "react-icons/bs";
-import "aos/dist/aos.css";
-import Aos from "aos";
 
 function ItemCard(props) {
   const listState = useContext(ItemContext);
   const [isEditing, setIsEditing] = useState(false);
   const [value, setValue] = useState(props.text);
   const text = useRef();
-
-  useEffect(() => {
-    Aos.init({ duration: 1000 });
-  }, []);
 
   const completeHandler = () => {
     listState.list.find((item) => item.id === props.id);
@@ -54,7 +48,7 @@ function ItemCard(props) {
   }, [isEditing]);
 
   return (
-    <li className={styles.card} data-aos="fade-down">
+    <li className={styles.card}>
       <form onSubmit={submitHandler}>
         <input
           className={styles}
