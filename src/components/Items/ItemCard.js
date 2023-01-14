@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { ItemContext } from "../../App";
 import styles from "./ItemCard.module.scss";
 import { AiFillEdit, AiOutlineCheck, AiOutlineUndo } from "react-icons/ai";
@@ -8,6 +8,8 @@ import Aos from "aos";
 
 function ItemCard(props) {
   const listState = useContext(ItemContext);
+  const [isEditing, setIsEditing] = useState(false);
+  const text = useRef();
 
   useEffect(() => {
     Aos.init({ duration: 1000 });
@@ -17,7 +19,7 @@ function ItemCard(props) {
     listState.list.find((item) => item.id === props.id);
     const itemIndex = listState.list.findIndex((item) => item.id === props.id);
     listState.setList((previousState) => {
-      previousState[itemIndex].completed = true;
+      previousState[itemIndex].completed = !previousState[itemIndex].completed;
       return [...previousState];
     });
   };
@@ -28,16 +30,45 @@ function ItemCard(props) {
     });
   };
 
+  const editHandler = (e) => {
+    console.log(e.target.textContent);
+    listState.list.find((item) => item.id === props.id);
+    const itemIndex = listState.list.findIndex((item) => item.id === props.id);
+    listState.setList((previousState) => {
+      previousState[itemIndex].text = e.target.textContent;
+      return [...previousState];
+    });
+  };
+
+  const onEditHandler = () => {
+    setIsEditing(!isEditing);
+    text.current.value.focus();
+    console.log(text);
+  };
+
   return (
     <li className={styles.card} data-aos="fade-down">
-      <p className={styles}>{props.text}</p>
+      <input
+        onInput={editHandler}
+        className={styles}
+        value={props.text}
+        disabled={!isEditing}
+        ref={text}
+      ></input>
       <div>
-        <button className={styles.button}>
+        <button className={styles.button} onClick={onEditHandler}>
           <AiFillEdit />
         </button>
-        <button onClick={completeHandler} className={styles.button}>
-          <AiOutlineCheck />
-        </button>
+        {!props.status && (
+          <button onClick={completeHandler} className={styles.button}>
+            <AiOutlineCheck />
+          </button>
+        )}
+        {props.status && (
+          <button onClick={completeHandler} className={styles.button}>
+            <AiOutlineUndo />
+          </button>
+        )}
         <button onClick={removeItemHandler} className={styles.button}>
           <BsFillTrashFill />
         </button>

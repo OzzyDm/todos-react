@@ -11,7 +11,12 @@ function CompletedTasks(props) {
         {props.items
           .filter((item) => item.completed === true)
           .map((item) => (
-            <ItemCard key={item.id} id={item.id} text={item.text} />
+            <ItemCard
+              key={item.id}
+              id={item.id}
+              text={item.text}
+              status={item.completed}
+            />
           ))}
       </ul>
     </div>

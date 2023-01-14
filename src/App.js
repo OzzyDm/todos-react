@@ -39,8 +39,6 @@ function App() {
     });
   };
 
-  console.log(list);
-
   return (
     <ItemContext.Provider value={{ list: list, setList: setList }}>
       <Layout>
