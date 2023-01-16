@@ -3,18 +3,14 @@ import { ItemContext } from "../../App";
 import styles from "./ItemCard.module.scss";
 import { AiFillEdit, AiOutlineCheck, AiOutlineUndo } from "react-icons/ai";
 import { BsFillTrashFill } from "react-icons/bs";
-import "aos/dist/aos.css";
-import Aos from "aos";
+import { HiArrowSmRight } from "react-icons/hi";
+import { BiCheckDouble } from "react-icons/bi";
 
 function ItemCard(props) {
   const listState = useContext(ItemContext);
   const [isEditing, setIsEditing] = useState(false);
   const [value, setValue] = useState(props.text);
   const text = useRef();
-
-  useEffect(() => {
-    Aos.init({ duration: 1000 });
-  }, []);
 
   const completeHandler = () => {
     listState.list.find((item) => item.id === props.id);
@@ -55,9 +51,11 @@ function ItemCard(props) {
 
   return (
     <li className={styles.card} data-aos="fade-down">
-      <form onSubmit={submitHandler}>
+      <form onSubmit={submitHandler} className={styles.form}>
+        {!props.status && <HiArrowSmRight className={styles.arrow} />}
+        {props.status && <BiCheckDouble className={styles.arrow} />}
         <input
-          className={styles}
+          className={styles.input}
           value={value}
           disabled={!isEditing}
           ref={text}
@@ -65,6 +63,7 @@ function ItemCard(props) {
             setValue(e.target.value);
           }}
           onBlur={submitHandler}
+          spellCheck={false}
         ></input>
       </form>
       <div>
