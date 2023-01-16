@@ -4,21 +4,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 40vw;
-  padding: 0.5rem;
-}
+  width: 35vw;
+  padding: 1rem;
 
-.text {
-  text-decoration-line: line-through;
+  &:hover {
+    .remove {
+      opacity: 1;
+    }
+  }
 }
 
 .button {
-  padding-top: 1rem;
   background-color: transparent;
   border: none;
-  font-size: 3rem;
   color: main.$color-tertiary-light;
   transition: all 0.2s;
+  font-size: 3rem;
 
   &:hover {
     cursor: pointer;
@@ -26,22 +27,17 @@
   }
 }
 
-.arrow {
-  color: main.$color-tertiary-light;
-  font-size: 3rem;
-  margin-right: 2rem;
-  transition: all 0.3s;
-}
-
 .input {
   background-color: transparent;
+  text-align: center;
   color: main.$color-white;
   border: none;
-  font-size: 2rem;
-  width: 15vw;
+  font-size: 2.3rem;
+  width: 25vw;
   padding-bottom: 1rem;
-  border-bottom: 1px solid main.$color-tertiary-light;
   transition: all 0.3s;
+  cursor: text;
+  border-bottom: 1px solid main.$color-tertiary-light;
 }
 
 .form {
@@ -49,16 +45,30 @@
   align-items: center;
 
   &:focus-within {
-    .arrow {
-      font-size: 4rem;
+    .button {
       transform: translateY(-0.5rem);
     }
 
     .input {
       outline: none;
-      width: 25vw;
+      width: 20vw;
+
       transform: translateY(-0.5rem);
       font-size: 2.2rem;
     }
+  }
+}
+
+.remove {
+  background-color: transparent;
+  border: none;
+  font-size: 4rem;
+  color: main.$color-tertiary-light;
+  opacity: 0;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    color: main.$color-tertiary;
   }
 }

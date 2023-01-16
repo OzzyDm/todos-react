@@ -1,10 +1,8 @@
 import { useContext, useEffect, useState, useRef } from "react";
 import { ItemContext } from "../../App";
 import styles from "./ItemCard.module.scss";
-import { AiFillEdit, AiOutlineCheck, AiOutlineUndo } from "react-icons/ai";
-import { BsFillTrashFill } from "react-icons/bs";
-import { HiArrowSmRight } from "react-icons/hi";
-import { BiCheckDouble } from "react-icons/bi";
+import { AiOutlineCheck, AiOutlineUndo } from "react-icons/ai";
+import { CSSTransition } from "react-transition-group";
 
 function ItemCard(props) {
   const listState = useContext(ItemContext);
@@ -50,26 +48,8 @@ function ItemCard(props) {
   }, [isEditing]);
 
   return (
-    <li className={styles.card}>
-      <form onSubmit={submitHandler} className={styles.form}>
-        {!props.status && <HiArrowSmRight className={styles.arrow} />}
-        {props.status && <BiCheckDouble className={styles.arrow} />}
-        <input
-          className={styles.input}
-          value={value}
-          disabled={!isEditing}
-          ref={text}
-          onChange={(e) => {
-            setValue(e.target.value);
-          }}
-          onBlur={submitHandler}
-          spellCheck={false}
-        ></input>
-      </form>
-      <div>
-        <button className={styles.button} onClick={onEditHandler}>
-          <AiFillEdit />
-        </button>
+    <CSSTransition in={true} timeout={5000} classNames="itemCard">
+      <li className={styles.card} onClick={onEditHandler}>
         {!props.status && (
           <button onClick={completeHandler} className={styles.button}>
             <AiOutlineCheck />
@@ -80,11 +60,26 @@ function ItemCard(props) {
             <AiOutlineUndo />
           </button>
         )}
-        <button onClick={removeItemHandler} className={styles.button}>
-          <BsFillTrashFill />
-        </button>
-      </div>
-    </li>
+        <form onSubmit={submitHandler} className={styles.form}>
+          <input
+            className={styles.input}
+            value={value}
+            disabled={!isEditing}
+            ref={text}
+            onChange={(e) => {
+              setValue(e.target.value);
+            }}
+            onBlur={submitHandler}
+            spellCheck={false}
+          ></input>
+        </form>
+        <div>
+          <button onClick={removeItemHandler} className={styles.remove}>
+            x
+          </button>
+        </div>
+      </li>
+    </CSSTransition>
   );
 }
 
