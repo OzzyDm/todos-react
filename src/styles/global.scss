@@ -23,13 +23,6 @@ body {
   color: main.$color-secondary;
 }
 
-#root {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
 a {
   text-decoration: none;
   color: inherit;
@@ -42,4 +35,31 @@ a {
 
 h1 {
   font-weight: inherit;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 1rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: darken(main.$color-primary, 5%);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: main.$color-primary-light;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: main.$color-primary-light-2;
 }

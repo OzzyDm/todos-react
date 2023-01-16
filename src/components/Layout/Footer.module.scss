@@ -4,7 +4,7 @@
   @include main.center;
   flex-direction: column;
   padding: 1rem;
-  color: lighten(main.$color-primary-light, 10%);
+  color: lighten(main.$color-primary-light-2, 5%);
   font-weight: 500;
 
   &:hover {

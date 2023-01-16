@@ -50,7 +50,7 @@ function ItemCard(props) {
   }, [isEditing]);
 
   return (
-    <li className={styles.card} data-aos="fade-down">
+    <li className={styles.card}>
       <form onSubmit={submitHandler} className={styles.form}>
         {!props.status && <HiArrowSmRight className={styles.arrow} />}
         {props.status && <BiCheckDouble className={styles.arrow} />}
