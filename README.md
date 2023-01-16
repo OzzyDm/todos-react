@@ -1,13 +1,13 @@
-<h1 align="center">Todos App
-    <h2 align="center">
+<h1 align="center">Todos App</h1>
+
+<h2 align="center">
     <a href="https://oguzhandemiraslan.dev/" target="_blank">Oguzhan Demiraslan</a> &
     <a href="https://omergencoglu.dev/" target="_blank">Omer Gencoglu</a>
-    </h2>
-</h1>
+</h2>
 
 <div align="center">
-<img alt="shieldsio" src="https://img.shields.io/badge/BUILT%20WITH-JAVASCRIPT-blue?style=for-the-badge" />&nbsp;
-<img alt="shieldsio" src="https://img.shields.io/badge/OPEN-SOURCE-blueviolet?style=for-the-badge" />
+    <img alt="shieldsio" src="https://img.shields.io/badge/BUILT%20WITH-JAVASCRIPT-blue?style=for-the-badge" />&nbsp;
+    <img alt="shieldsio" src="https://img.shields.io/badge/OPEN-SOURCE-blueviolet?style=for-the-badge" />
 </div>
 
 ## TL;DR
