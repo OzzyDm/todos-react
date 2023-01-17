@@ -30,7 +30,7 @@ function App() {
   const addItemHandler = (enteredText) => {
     setList((prevItems) => {
       const updatedList = [...prevItems];
-      updatedList.push({
+      updatedList.unshift({
         text: enteredText,
         id: crypto.randomUUID(),
         completed: false,

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState, useRef } from "react";
 import { ItemContext } from "../../App";
 import styles from "./ItemCard.module.scss";
 import { AiOutlineCheck, AiOutlineUndo } from "react-icons/ai";
-import { CSSTransition } from "react-transition-group";
+import TextareaAutosize from "react-textarea-autosize";
 
 function ItemCard(props) {
   const listState = useContext(ItemContext);
@@ -37,7 +37,7 @@ function ItemCard(props) {
   };
 
   const onEditHandler = () => {
-    setIsEditing(!isEditing);
+    setIsEditing(true);
     text.current.focus();
   };
 
@@ -47,39 +47,44 @@ function ItemCard(props) {
     }
   }, [isEditing]);
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      submitHandler(event);
+    }
+  };
+
   return (
-    <CSSTransition in={true} timeout={5000} classNames="itemCard">
-      <li className={styles.card} onClick={onEditHandler}>
-        {!props.status && (
-          <button onClick={completeHandler} className={styles.button}>
-            <AiOutlineCheck />
-          </button>
-        )}
-        {props.status && (
-          <button onClick={completeHandler} className={styles.button}>
-            <AiOutlineUndo />
-          </button>
-        )}
-        <form onSubmit={submitHandler} className={styles.form}>
-          <input
-            className={styles.input}
-            value={value}
-            disabled={!isEditing}
-            ref={text}
-            onChange={(e) => {
-              setValue(e.target.value);
-            }}
-            onBlur={submitHandler}
-            spellCheck={false}
-          ></input>
-        </form>
-        <div>
-          <button onClick={removeItemHandler} className={styles.remove}>
-            x
-          </button>
-        </div>
-      </li>
-    </CSSTransition>
+    <li className={styles.card} onClick={onEditHandler}>
+      {!props.status && (
+        <button onClick={completeHandler} className={styles.button}>
+          <AiOutlineCheck />
+        </button>
+      )}
+      {props.status && (
+        <button onClick={completeHandler} className={styles.button}>
+          <AiOutlineUndo />
+        </button>
+      )}
+      <form onSubmit={submitHandler} className={styles.form}>
+        <TextareaAutosize
+          className={styles.input}
+          value={value}
+          disabled={!isEditing}
+          ref={text}
+          onChange={(e) => {
+            setValue(e.target.value);
+          }}
+          onBlur={submitHandler}
+          spellCheck={false}
+          onKeyDown={handleKeyDown}
+        />
+      </form>
+      <div>
+        <button onClick={removeItemHandler} className={styles.remove}>
+          x
+        </button>
+      </div>
+    </li>
   );
 }
 

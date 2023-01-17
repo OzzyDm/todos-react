@@ -1,13 +1,14 @@
 import ItemCard from "./ItemCard";
 import styles from "./CompletedItems.module.scss";
+import { Fragment } from "react";
 
 function CompletedTasks(props) {
   const notEmpty = props.items.find((item) => item.completed);
 
   return (
-    <div>
+    <Fragment>
       {notEmpty && <h2 className={styles.title}>Completed</h2>}
-      <ul>
+      <ul className={styles.list}>
         {props.items
           .filter((item) => item.completed === true)
           .map((item) => (
@@ -19,7 +20,7 @@ function CompletedTasks(props) {
             />
           ))}
       </ul>
-    </div>
+    </Fragment>
   );
 }
 
