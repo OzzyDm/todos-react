@@ -7,11 +7,16 @@
   width: 100%;
   padding: 1rem;
   gap: 1rem;
+  transition: scale 0.2s;
 
   &:hover {
     .remove {
       opacity: 1;
     }
+  }
+
+  &:focus-within {
+    scale: 1.05;
   }
 }
 
@@ -53,7 +58,6 @@
   &:focus-within {
     .input {
       outline: none;
-      width: 20vw;
     }
   }
 }
