@@ -1,9 +1,12 @@
+import FlipMove from "react-flip-move";
+
 import ItemCard from "./ItemCard";
+
 import styles from "./ItemList.module.scss";
 
 function ItemList(props) {
   return (
-    <ul className={styles.list}>
+    <FlipMove typeName="ul" className={styles.list}>
       {props.items
         .filter((item) => item.completed === false)
         .map((item) => (
@@ -14,7 +17,7 @@ function ItemList(props) {
             status={item.completed}
           />
         ))}
-    </ul>
+    </FlipMove>
   );
 }
 

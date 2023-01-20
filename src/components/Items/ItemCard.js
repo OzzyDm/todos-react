@@ -1,10 +1,12 @@
-import { useContext, useEffect, useState, useRef } from "react";
-import { ItemContext } from "../../App";
-import styles from "./ItemCard.module.scss";
-import { AiOutlineCheck, AiOutlineUndo } from "react-icons/ai";
+import { useContext, useEffect, useState, useRef, forwardRef } from "react";
 import TextareaAutosize from "react-textarea-autosize";
+import { AiOutlineCheck, AiOutlineUndo } from "react-icons/ai";
 
-function ItemCard(props) {
+import { ItemContext } from "../../App";
+
+import styles from "./ItemCard.module.scss";
+
+const ItemCard = forwardRef((props, ref) => {
   const listState = useContext(ItemContext);
   const [isEditing, setIsEditing] = useState(false);
   const [value, setValue] = useState(props.text);
@@ -54,7 +56,7 @@ function ItemCard(props) {
   };
 
   return (
-    <li className={styles.card} onClick={onEditHandler}>
+    <li ref={ref} className={styles.card} onClick={onEditHandler}>
       {!props.status && (
         <button onClick={completeHandler} className={styles.button}>
           <AiOutlineCheck />
@@ -86,6 +88,6 @@ function ItemCard(props) {
       </div>
     </li>
   );
-}
+});
 
 export default ItemCard;
