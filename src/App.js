@@ -3,7 +3,6 @@ import { createContext, useState, useEffect, useRef } from "react";
 import Layout from "./components/Layout/Layout";
 import ItemList from "./components/Items/ItemList";
 import NewItem from "./components/NewItem/NewItem";
-import CompletedItems from "./components/Items/CompletedItems";
 
 export const ItemContext = createContext();
 
@@ -44,7 +43,6 @@ function App() {
       <Layout>
         <NewItem onAddItem={addItemHandler} />
         <ItemList items={list} />
-        <CompletedItems items={list} />
       </Layout>
     </ItemContext.Provider>
   );

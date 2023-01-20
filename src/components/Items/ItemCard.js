@@ -16,9 +16,18 @@ const ItemCard = forwardRef((props, ref) => {
 
   const itemIndex = listState.list.findIndex((item) => item.id === props.id);
 
-  const statusChangeHandler = () => {
+  const completeHandler = () => {
     listState.setList((previousState) => {
-      previousState[itemIndex].completed = !previousState[itemIndex].completed;
+      previousState[itemIndex].completed = true;
+      previousState.push(previousState.splice(itemIndex, 1)[0]);
+      return [...previousState];
+    });
+  };
+
+  const uncompleteHandler = () => {
+    listState.setList((previousState) => {
+      previousState[itemIndex].completed = false;
+      previousState.unshift(previousState.splice(itemIndex, 1)[0]);
       return [...previousState];
     });
   };
@@ -58,12 +67,12 @@ const ItemCard = forwardRef((props, ref) => {
   return (
     <li ref={ref} className={styles.card}>
       {!props.status && (
-        <button onClick={statusChangeHandler} className={styles.button}>
+        <button onClick={completeHandler} className={styles.button}>
           <AiOutlineCheck />
         </button>
       )}
       {props.status && (
-        <button onClick={statusChangeHandler} className={styles.button}>
+        <button onClick={uncompleteHandler} className={styles.button}>
           <AiOutlineUndo />
         </button>
       )}
@@ -73,7 +82,7 @@ const ItemCard = forwardRef((props, ref) => {
         onClick={onEditHandler}
       >
         <TextareaAutosize
-          className={styles.input}
+          className={`${styles.input} ${props.status && styles.completed}`}
           value={inputValue}
           disabled={!isEditing}
           spellCheck={false}
