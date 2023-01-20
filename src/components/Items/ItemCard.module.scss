@@ -52,11 +52,11 @@
 
   &:focus-within {
     .button {
-      // transform: translateY(-0.5rem);
     }
 
     .input {
       outline: none;
+      width: 20vw;
     }
   }
 }
