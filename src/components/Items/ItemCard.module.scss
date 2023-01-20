@@ -26,7 +26,7 @@
 
   &:hover {
     cursor: pointer;
-    color: main.$color-tertiary-dark;
+    color: main.$color-tertiary;
   }
 }
 
@@ -63,7 +63,7 @@
   min-width: 5rem;
   background-color: transparent;
   border: none;
-  font-size: 4rem;
+  font-size: 3rem;
   color: main.$color-tertiary-light;
   opacity: 0;
   transition: all 0.2s;

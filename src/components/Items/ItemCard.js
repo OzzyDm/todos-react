@@ -1,20 +1,22 @@
 import { useContext, useEffect, useState, useRef, forwardRef } from "react";
-import TextareaAutosize from "react-textarea-autosize";
-import { AiOutlineCheck, AiOutlineUndo } from "react-icons/ai";
 
+import TextareaAutosize from "react-textarea-autosize";
+import { AiOutlineCheck, AiOutlineUndo, AiOutlineClose } from "react-icons/ai";
 import { ItemContext } from "../../App";
 
 import styles from "./ItemCard.module.scss";
 
 const ItemCard = forwardRef((props, ref) => {
   const listState = useContext(ItemContext);
-  const [isEditing, setIsEditing] = useState(false);
-  const [value, setValue] = useState(props.text);
-  const text = useRef();
 
-  const completeHandler = () => {
-    listState.list.find((item) => item.id === props.id);
-    const itemIndex = listState.list.findIndex((item) => item.id === props.id);
+  const [isEditing, setIsEditing] = useState(false);
+  const [inputValue, setInputValue] = useState(props.text);
+
+  const inputRef = useRef();
+
+  const itemIndex = listState.list.findIndex((item) => item.id === props.id);
+
+  const statusChangeHandler = () => {
     listState.setList((previousState) => {
       previousState[itemIndex].completed = !previousState[itemIndex].completed;
       return [...previousState];
@@ -29,25 +31,17 @@ const ItemCard = forwardRef((props, ref) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setIsEditing(!isEditing);
-    listState.list.find((item) => item.id === props.id);
-    const itemIndex = listState.list.findIndex((item) => item.id === props.id);
+    setIsEditing(false);
     listState.setList((previousState) => {
-      previousState[itemIndex].text = value;
+      previousState[itemIndex].text = inputValue;
       return [...previousState];
     });
   };
 
   const onEditHandler = () => {
     setIsEditing(true);
-    text.current.focus();
+    inputRef.current.focus();
   };
-
-  useEffect(() => {
-    if (isEditing) {
-      text.current.focus();
-    }
-  }, [isEditing]);
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
@@ -55,35 +49,45 @@ const ItemCard = forwardRef((props, ref) => {
     }
   };
 
+  useEffect(() => {
+    if (isEditing) {
+      inputRef.current.focus();
+    }
+  }, [isEditing]);
+
   return (
-    <li ref={ref} className={styles.card} onClick={onEditHandler}>
+    <li ref={ref} className={styles.card}>
       {!props.status && (
-        <button onClick={completeHandler} className={styles.button}>
+        <button onClick={statusChangeHandler} className={styles.button}>
           <AiOutlineCheck />
         </button>
       )}
       {props.status && (
-        <button onClick={completeHandler} className={styles.button}>
+        <button onClick={statusChangeHandler} className={styles.button}>
           <AiOutlineUndo />
         </button>
       )}
-      <form onSubmit={submitHandler} className={styles.form}>
+      <form
+        onSubmit={submitHandler}
+        className={styles.form}
+        onClick={onEditHandler}
+      >
         <TextareaAutosize
           className={styles.input}
-          value={value}
+          value={inputValue}
           disabled={!isEditing}
-          ref={text}
+          spellCheck={false}
+          ref={inputRef}
           onChange={(e) => {
-            setValue(e.target.value);
+            setInputValue(e.target.value);
           }}
           onBlur={submitHandler}
-          spellCheck={false}
           onKeyDown={handleKeyDown}
         />
       </form>
       <div>
         <button onClick={removeItemHandler} className={styles.remove}>
-          x
+          <AiOutlineClose />
         </button>
       </div>
     </li>
