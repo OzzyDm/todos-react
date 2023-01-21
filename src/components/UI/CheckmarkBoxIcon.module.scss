@@ -1,0 +1,39 @@
+@use "../../styles/main";
+
+.icon {
+  @include main.center;
+  position: relative;
+  background-color: transparent;
+  border: none;
+  color: main.$color-tertiary-light;
+  transition: all 0.2s;
+  font-size: 3rem;
+  min-width: 5rem;
+  cursor: pointer;
+
+  @media (hover: hover) {
+    &:hover {
+      scale: 1.1;
+
+      .checkmarkIcon {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+
+      .completed {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+      }
+    }
+  }
+}
+
+.checkmarkIcon {
+  position: absolute;
+  font-size: 0.65em;
+  clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+  transition: all 0.4s;
+}
+
+.completed {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transition: all 0.4s;
+}

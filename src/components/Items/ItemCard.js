@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState, useRef, forwardRef } from "react";
-
 import TextareaAutosize from "react-textarea-autosize";
-import { AiOutlineCheck, AiOutlineUndo, AiOutlineClose } from "react-icons/ai";
+import { AiOutlinePlus } from "react-icons/ai";
 import { ItemContext } from "../../App";
+
+import CheckmarkBoxIcon from "../UI/CheckmarkBoxIcon";
 
 import styles from "./ItemCard.module.scss";
 
@@ -65,24 +66,21 @@ const ItemCard = forwardRef((props, ref) => {
   }, [isEditing]);
 
   return (
-    <li ref={ref} className={styles.card}>
-      {!props.status && (
-        <button onClick={completeHandler} className={styles.button}>
-          <AiOutlineCheck />
-        </button>
-      )}
-      {props.status && (
-        <button onClick={uncompleteHandler} className={styles.button}>
-          <AiOutlineUndo />
-        </button>
-      )}
+    <li
+      ref={ref}
+      className={`${styles.card} ${props.status && styles.completed}`}
+    >
+      <CheckmarkBoxIcon
+        onClick={!props.status ? completeHandler : uncompleteHandler}
+        status={props.status}
+      />
       <form
-        onSubmit={submitHandler}
         className={styles.form}
+        onSubmit={submitHandler}
         onClick={onEditHandler}
       >
         <TextareaAutosize
-          className={`${styles.input} ${props.status && styles.completed}`}
+          className={styles.input}
           value={inputValue}
           disabled={!isEditing}
           spellCheck={false}
@@ -94,11 +92,10 @@ const ItemCard = forwardRef((props, ref) => {
           onKeyDown={handleKeyDown}
         />
       </form>
-      <div>
-        <button onClick={removeItemHandler} className={styles.remove}>
-          <AiOutlineClose />
-        </button>
-      </div>
+
+      <i onClick={removeItemHandler} className={styles.removeIcon}>
+        <AiOutlinePlus />
+      </i>
     </li>
   );
 });
