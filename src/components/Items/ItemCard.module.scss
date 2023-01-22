@@ -10,8 +10,8 @@
   transition: scale 0.2s;
 
   &:hover {
-    .remove {
-      opacity: 1;
+    .removeIcon {
+      clip-path: circle(50% at 50% 50%);
     }
   }
 
@@ -20,24 +20,9 @@
   }
 }
 
-.button {
-  @include main.center;
-  background-color: transparent;
-  border: none;
-  color: main.$color-tertiary-light;
-  transition: all 0.2s;
-  font-size: 3rem;
-  min-width: 5rem;
-
-  &:hover {
-    cursor: pointer;
-    color: main.$color-tertiary;
-  }
-}
-
 .input {
   background-color: transparent;
-  color: main.$color-white;
+  color: main.$color-secondary;
   border: none;
   font-size: 2.3rem;
   font-family: inherit;
@@ -62,18 +47,24 @@
   }
 }
 
-.remove {
+.removeIcon {
   @include main.center;
   min-width: 5rem;
   background-color: transparent;
   border: none;
-  font-size: 3rem;
+  font-size: 3.5rem;
   color: main.$color-tertiary-light;
-  opacity: 0;
-  transition: all 0.2s;
+  clip-path: circle(0% at 50% 50%);
+  transition: all 0.5s;
   cursor: pointer;
+  transform: rotate(45deg);
 
   &:hover {
-    color: main.$color-tertiary;
+    transform: rotate(135deg);
   }
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
 }

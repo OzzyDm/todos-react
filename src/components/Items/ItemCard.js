@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState, useRef, forwardRef } from "react";
-
 import TextareaAutosize from "react-textarea-autosize";
-import { AiOutlineCheck, AiOutlineUndo, AiOutlineClose } from "react-icons/ai";
+import { AiOutlinePlus } from "react-icons/ai";
 import { ItemContext } from "../../App";
+
+import CheckmarkBoxIcon from "../UI/CheckmarkBoxIcon";
 
 import styles from "./ItemCard.module.scss";
 
@@ -16,9 +17,18 @@ const ItemCard = forwardRef((props, ref) => {
 
   const itemIndex = listState.list.findIndex((item) => item.id === props.id);
 
-  const statusChangeHandler = () => {
+  const completeHandler = () => {
     listState.setList((previousState) => {
-      previousState[itemIndex].completed = !previousState[itemIndex].completed;
+      previousState[itemIndex].completed = true;
+      previousState.push(previousState.splice(itemIndex, 1)[0]);
+      return [...previousState];
+    });
+  };
+
+  const uncompleteHandler = () => {
+    listState.setList((previousState) => {
+      previousState[itemIndex].completed = false;
+      previousState.unshift(previousState.splice(itemIndex, 1)[0]);
       return [...previousState];
     });
   };
@@ -56,20 +66,17 @@ const ItemCard = forwardRef((props, ref) => {
   }, [isEditing]);
 
   return (
-    <li ref={ref} className={styles.card}>
-      {!props.status && (
-        <button onClick={statusChangeHandler} className={styles.button}>
-          <AiOutlineCheck />
-        </button>
-      )}
-      {props.status && (
-        <button onClick={statusChangeHandler} className={styles.button}>
-          <AiOutlineUndo />
-        </button>
-      )}
+    <li
+      ref={ref}
+      className={`${styles.card} ${props.status && styles.completed}`}
+    >
+      <CheckmarkBoxIcon
+        onClick={!props.status ? completeHandler : uncompleteHandler}
+        status={props.status}
+      />
       <form
-        onSubmit={submitHandler}
         className={styles.form}
+        onSubmit={submitHandler}
         onClick={onEditHandler}
       >
         <TextareaAutosize
@@ -85,11 +92,10 @@ const ItemCard = forwardRef((props, ref) => {
           onKeyDown={handleKeyDown}
         />
       </form>
-      <div>
-        <button onClick={removeItemHandler} className={styles.remove}>
-          <AiOutlineClose />
-        </button>
-      </div>
+
+      <i onClick={removeItemHandler} className={styles.removeIcon}>
+        <AiOutlinePlus />
+      </i>
     </li>
   );
 });
