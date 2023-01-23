@@ -12,7 +12,7 @@ function App() {
   const isMounted = useRef(false);
 
   useEffect(() => {
-    const listLocal = JSON.parse(localStorage.getItem("list"));
+    const listLocal = JSON.parse(localStorage.getItem("todos-list"));
     if (listLocal) {
       setList(listLocal);
     }
@@ -20,7 +20,7 @@ function App() {
 
   useEffect(() => {
     if (isMounted.current) {
-      localStorage.setItem("list", JSON.stringify(list));
+      localStorage.setItem("todos-list", JSON.stringify(list));
     } else {
       isMounted.current = true;
     }
