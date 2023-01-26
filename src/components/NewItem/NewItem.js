@@ -36,9 +36,6 @@ function NewItem(props) {
 
   return (
     <form onSubmit={formSubmitHandler} ref={formRef} className={styles.form}>
-      <label htmlFor="newItem" hidden>
-        Add a new item
-      </label>
       <button type="submit" className={styles.submitButton}>
         <AiOutlinePlus />
       </button>
@@ -49,6 +46,9 @@ function NewItem(props) {
       >
         What needs to be done?
       </button>
+      <label htmlFor="newItem" hidden>
+        Add a new item
+      </label>
       <input
         id="newItem"
         type="text"

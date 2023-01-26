@@ -11,7 +11,7 @@
     &:hover {
       .input {
         width: 24rem;
-        visibility: visible;
+        border-bottom: 1px solid main.$color-tertiary-light;
       }
 
       .submitButton {
@@ -34,11 +34,11 @@
     }
 
     .input {
-      visibility: visible;
       transform: translateY(1.5rem);
       color: main.$color-secondary;
       outline: none;
       width: 70%;
+      border-bottom: 1px solid main.$color-tertiary-light;
       cursor: text;
     }
   }
@@ -72,10 +72,9 @@
   border: none;
   font-size: 2rem;
   color: transparent;
-  border-bottom: 1px solid main.$color-tertiary-light;
-  visibility: hidden;
+  border-bottom: 0px solid main.$color-tertiary-light;
   width: 0;
   transform: translateY(-2rem);
-  cursor: pointer;
   transition: all 0.4s;
+  cursor: pointer;
 }
