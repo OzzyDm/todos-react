@@ -39,6 +39,16 @@ h1 {
   font-weight: inherit;
 }
 
+/* Remove mobile highligh color */
+input,
+textarea,
+button,
+select,
+a,
+i {
+  -webkit-tap-highlight-color: transparent;
+}
+
 #root {
   height: 100%;
   display: flex;
