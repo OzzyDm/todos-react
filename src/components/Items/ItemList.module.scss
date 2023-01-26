@@ -13,8 +13,10 @@
   color: main.$color-tertiary-light;
   transition: all 0.2s;
 
-  &:hover {
-    cursor: pointer;
-    color: main.$color-tertiary-dark;
+  @media (hover: hover) {
+    &:hover {
+      cursor: pointer;
+      color: main.$color-tertiary-dark;
+    }
   }
 }

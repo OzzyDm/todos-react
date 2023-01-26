@@ -8,13 +8,15 @@
   color: lighten(main.$color-primary-light-2, 5%);
   font-weight: 500;
 
-  &:hover {
-    .heart {
-      color: main.$color-tertiary-light;
-    }
+  @media (hover: hover) {
+    &:hover {
+      .heart {
+        color: main.$color-tertiary-light;
+      }
 
-    a {
-      color: main.$color-tertiary-light;
+      a {
+        color: main.$color-tertiary-light;
+      }
     }
   }
 

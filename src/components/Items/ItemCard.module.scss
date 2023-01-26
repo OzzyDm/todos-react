@@ -9,9 +9,11 @@
   gap: 1rem;
   transition: scale 0.2s;
 
-  &:hover {
-    .removeIcon {
-      clip-path: circle(50% at 50% 50%);
+  @media (hover: hover) {
+    &:hover {
+      .removeIcon {
+        clip-path: circle(50% at 50% 50%);
+      }
     }
   }
 
@@ -54,13 +56,16 @@
   border: none;
   font-size: 3.5rem;
   color: main.$color-tertiary-light;
-  clip-path: circle(0% at 50% 50%);
-  transition: all 0.5s;
   cursor: pointer;
   transform: rotate(45deg);
+  transition: all 0.5s;
 
-  &:hover {
-    transform: rotate(135deg);
+  @media (hover: hover) {
+    clip-path: circle(0% at 50% 50%);
+
+    &:hover {
+      transform: rotate(135deg);
+    }
   }
 }
 
