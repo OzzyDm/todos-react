@@ -80,7 +80,9 @@ const ItemCard = forwardRef((props, ref) => {
         onClick={onEditHandler}
       >
         <TextareaAutosize
-          className={styles.input}
+          className={`${styles.input} ${
+            props.status ? styles.completedTextarea : ""
+          }`}
           value={inputValue}
           disabled={!isEditing}
           spellCheck={false}
@@ -93,7 +95,12 @@ const ItemCard = forwardRef((props, ref) => {
         />
       </form>
 
-      <i onClick={removeItemHandler} className={styles.removeIcon}>
+      <i
+        onClick={removeItemHandler}
+        className={`${styles.removeIcon} ${
+          props.status ? styles.completedRemoveIcon : ""
+        }`}
+      >
         <AiOutlinePlus />
       </i>
     </li>

@@ -36,4 +36,9 @@
 .completed {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   transition: all 0.4s;
+  color: main.$color-secondary;
+}
+
+.completedColor {
+  color: main.$color-secondary;
 }

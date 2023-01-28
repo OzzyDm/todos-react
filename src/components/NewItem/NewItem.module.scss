@@ -35,7 +35,7 @@
 
     .input {
       transform: translateY(1.5rem);
-      color: main.$color-secondary;
+      color: main.$color-white;
       outline: none;
       width: 70%;
       border-bottom: 1px solid main.$color-tertiary-light;
@@ -58,7 +58,7 @@
 .focusButton {
   background-color: transparent;
   border: none;
-  color: main.$color-secondary;
+  color: main.$color-white;
   font-size: 2rem;
   opacity: 1;
   user-select: none;

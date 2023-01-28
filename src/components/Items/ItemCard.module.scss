@@ -24,7 +24,7 @@
 
 .input {
   background-color: transparent;
-  color: main.$color-secondary;
+  color: main.$color-white;
   border: none;
   font-size: 2.3rem;
   font-family: inherit;
@@ -73,4 +73,12 @@
 .completed {
   text-decoration: line-through;
   opacity: 0.6;
+}
+
+.completedTextarea {
+  border-bottom: 1px solid main.$color-secondary;
+}
+
+.completedRemoveIcon {
+  color: main.$color-secondary;
 }

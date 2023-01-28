@@ -10,7 +10,11 @@ function CheckmarkBoxIcon(props) {
           props.status ? styles.completed : ""
         }`}
       />
-      <AiOutlineBorder className={styles.boxIcon} />
+      <AiOutlineBorder
+        className={`${styles.boxIcon} ${
+          props.status ? styles.completedColor : ""
+        }`}
+      />
     </i>
   );
 }
