@@ -5,20 +5,22 @@
   font-size: 62.5%; // 1 rem = 10px
   scroll-behavior: smooth;
 
-  @include main.respond(big-desktop) {
-    font-size: 75%;
-  }
+  @media (any-pointer: coarse) {
+    @include main.respond(big-desktop) {
+      font-size: 75%;
+    }
 
-  @include main.respond(tab-land) {
-    font-size: 56.25%;
-  }
+    @include main.respond(tab-land) {
+      font-size: 56.25%;
+    }
 
-  @include main.respond(tab-port) {
-    font-size: 50%;
-  }
+    @include main.respond(tab-port) {
+      font-size: 50%;
+    }
 
-  @include main.respond(small-phone) {
-    font-size: 45%;
+    @include main.respond(small-phone) {
+      font-size: 42%;
+    }
   }
 }
 
