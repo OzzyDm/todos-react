@@ -68,7 +68,7 @@ const ItemCard = forwardRef((props, ref) => {
   return (
     <li
       ref={ref}
-      className={`${styles.card} ${props.status && styles.completed}`}
+      className={`${styles.card} ${props.status ? styles.completed : ""}`}
     >
       <CheckmarkBoxIcon
         onClick={!props.status ? completeHandler : uncompleteHandler}

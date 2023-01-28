@@ -7,7 +7,7 @@ function CheckmarkBoxIcon(props) {
     <i onClick={props.onClick} className={styles.icon}>
       <AiOutlineCheck
         className={`${styles.checkmarkIcon} ${
-          props.status && styles.completed
+          props.status ? styles.completed : ""
         }`}
       />
       <AiOutlineBorder className={styles.boxIcon} />
