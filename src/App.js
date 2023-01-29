@@ -3,6 +3,7 @@ import { createContext, useState, useEffect, useRef } from "react";
 import Layout from "./components/Layout/Layout";
 import ItemList from "./components/Items/ItemList";
 import NewItem from "./components/NewItem/NewItem";
+import FilterListButton from "./components/UI/FilterListButton";
 
 export const ItemContext = createContext();
 
@@ -43,6 +44,7 @@ function App() {
       <Layout>
         <NewItem onAddItem={addItemHandler} />
         <ItemList items={list} />
+        <FilterListButton />
       </Layout>
     </ItemContext.Provider>
   );
