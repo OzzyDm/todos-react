@@ -9,8 +9,13 @@ export const ItemContext = createContext();
 
 function App() {
   const [list, setList] = useState([]);
+  const [filter, setFilter] = useState("all");
 
   const isMounted = useRef(false);
+
+  const onOptionChange = (e) => {
+    setFilter(e.target.value);
+  };
 
   useEffect(() => {
     const listLocal = JSON.parse(localStorage.getItem("todos-list"));
@@ -43,8 +48,8 @@ function App() {
     <ItemContext.Provider value={{ list: list, setList: setList }}>
       <Layout>
         <NewItem onAddItem={addItemHandler} />
-        <ItemList items={list} />
-        <FilterListButton />
+        <ItemList items={list} filter={filter} />
+        <FilterListButton filter={filter} changeHandler={onOptionChange} />
       </Layout>
     </ItemContext.Provider>
   );

@@ -1,12 +1,4 @@
-import { useState } from "react";
-
-function FilterListButton() {
-  const [filter, setFilter] = useState("all");
-
-  const onOptionChange = (e) => {
-    setFilter(e.target.value);
-  };
-
+function FilterListButton(props) {
   return (
     <div>
       <label for="all">All</label>
@@ -15,8 +7,8 @@ function FilterListButton() {
         id="all"
         name="filter"
         value="all"
-        checked={filter === "all"}
-        onChange={onOptionChange}
+        checked={props.filter === "all"}
+        onChange={props.changeHandler}
       />
       <label for="todo">To Do</label>
       <input
@@ -24,18 +16,17 @@ function FilterListButton() {
         id="todo"
         name="filter"
         value="todo"
-        checked={filter === "todo"}
-        onChange={onOptionChange}
+        checked={props.filter === "todo"}
+        onChange={props.changeHandler}
       />
-
       <label for="completed">Completed</label>
       <input
         type="radio"
         id="completed"
         name="filter"
         value="completed"
-        checked={filter === "completed"}
-        onChange={onOptionChange}
+        checked={props.filter === "completed"}
+        onChange={props.changeHandler}
       />
     </div>
   );
