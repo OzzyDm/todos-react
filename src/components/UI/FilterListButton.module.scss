@@ -1,0 +1,31 @@
+@use "../../styles/main.scss";
+
+.section {
+  position: fixed;
+  display: flex;
+  right: 5rem;
+  bottom: 5rem;
+}
+
+.button {
+  width: 5rem;
+  height: 5rem;
+  display: none;
+
+  &:checked + label {
+    color: main.$color-tertiary;
+  }
+}
+
+.icon {
+  display: inline-block;
+  font-size: 5rem;
+  padding-left: 1rem;
+  cursor: pointer;
+  color: main.$color-tertiary-light;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: translateY(-0.3rem);
+  }
+}
