@@ -19,18 +19,25 @@ function App() {
 
   useEffect(() => {
     const listLocal = JSON.parse(localStorage.getItem("todos-list"));
+    const filterLocal = JSON.parse(localStorage.getItem("filter-list"));
     if (listLocal) {
       setList(listLocal);
+    }
+    if (filterLocal) {
+      setFilter(filterLocal);
     }
   }, []);
 
   useEffect(() => {
     if (isMounted.current) {
       localStorage.setItem("todos-list", JSON.stringify(list));
+    }
+    if (isMounted.current) {
+      localStorage.setItem("filter-list", JSON.stringify(filter));
     } else {
       isMounted.current = true;
     }
-  }, [list]);
+  }, [list, filter]);
 
   const addItemHandler = (enteredText) => {
     setList((prevItems) => {
