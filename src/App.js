@@ -55,8 +55,8 @@ function App() {
     <ItemContext.Provider value={{ list: list, setList: setList }}>
       <Layout>
         <NewItem onAddItem={addItemHandler} />
-        <ItemList items={list} filter={filter} />
         <FilterListButton filter={filter} changeHandler={onOptionChange} />
+        <ItemList items={list} filter={filter} />
       </Layout>
     </ItemContext.Provider>
   );

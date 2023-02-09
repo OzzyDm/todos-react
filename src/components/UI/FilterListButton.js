@@ -1,6 +1,9 @@
 import styles from "./FilterListButton.module.scss";
-import { AiOutlineCheckCircle, AiOutlineClockCircle } from "react-icons/ai";
-import { IoListCircleOutline } from "react-icons/io5";
+import {
+  AiOutlineUnorderedList,
+  AiOutlineBorder,
+  AiOutlineCheckSquare,
+} from "react-icons/ai";
 
 function FilterListButton(props) {
   return (
@@ -15,7 +18,7 @@ function FilterListButton(props) {
         onChange={props.changeHandler}
       />
       <label htmlFor="all" className={styles.icon} title="All Todos">
-        <IoListCircleOutline />
+        <AiOutlineUnorderedList />
       </label>
       <input
         className={styles.button}
@@ -27,7 +30,7 @@ function FilterListButton(props) {
         onChange={props.changeHandler}
       />
       <label htmlFor="todo" className={styles.icon} title="Todos List">
-        <AiOutlineClockCircle />
+        <AiOutlineBorder />
       </label>
       <input
         className={styles.button}
@@ -39,7 +42,7 @@ function FilterListButton(props) {
         onChange={props.changeHandler}
       />
       <label htmlFor="completed" className={styles.icon} title="Completed List">
-        <AiOutlineCheckCircle />
+        <AiOutlineCheckSquare />
       </label>
     </div>
   );
