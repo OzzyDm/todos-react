@@ -1,4 +1,4 @@
-<h1 align="center">Todos App</h1>
+<h1 align="center"><a href="https://ozzydm.github.io/todos-react/" target="_blank">Todos App</a></h1>
 
 <h2 align="center">
     <a href="https://oguzhandemiraslan.dev/" target="_blank">Oguzhan Demiraslan</a> &
