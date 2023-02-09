@@ -23,3 +23,11 @@
     }
   }
 }
+
+.fallback {
+  @include main.center;
+  width: 100%;
+  font-style: italic;
+  font-size: 1.7rem;
+  margin-top: 5rem;
+}
