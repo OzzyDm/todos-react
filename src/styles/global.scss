@@ -6,19 +6,27 @@
   scroll-behavior: smooth;
 
   @media (any-pointer: coarse) {
-    @include main.respond(big-desktop) {
+    @include main.respond(xxl) {
       font-size: 75%;
     }
 
-    @include main.respond(tab-land) {
+    @include main.respond(xl) {
       font-size: 56.25%;
     }
 
-    @include main.respond(tab-port) {
+    @include main.respond(lg) {
+      font-size: 52%;
+    }
+
+    @include main.respond(md) {
       font-size: 50%;
     }
 
-    @include main.respond(small-phone) {
+    @include main.respond(sm) {
+      font-size: 46%;
+    }
+
+    @include main.respond(xs) {
       font-size: 42%;
     }
   }
