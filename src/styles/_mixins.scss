@@ -6,36 +6,34 @@
 
 @mixin respond($breakpoint) {
   @if $breakpoint == xs {
-    @media only screen and (max-width: 18.75em) {
-      //300px
+    @media only screen and (max-width: 26.25em) {
+      //420px
       @content;
     }
   }
+
   @if $breakpoint == sm {
     @media only screen and (max-width: 37.5em) {
       //600px
       @content;
     }
   }
+
   @if $breakpoint == md {
     @media only screen and (max-width: 56.25em) {
       //900px
       @content;
     }
   }
+
   @if $breakpoint == lg {
-    @media only screen and (max-width: 68.75em) {
-      //1100px
-      @content;
-    }
-  }
-  @if $breakpoint == xl {
     @media only screen and (max-width: 75em) {
       //1200px
       @content;
     }
   }
-  @if $breakpoint == xxl {
+
+  @if $breakpoint == xl {
     @media only screen and (min-width: 112.5em) {
       //1800px
       @content;

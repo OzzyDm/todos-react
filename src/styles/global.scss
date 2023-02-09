@@ -6,16 +6,12 @@
   scroll-behavior: smooth;
 
   @media (any-pointer: coarse) {
-    @include main.respond(xxl) {
+    @include main.respond(xl) {
       font-size: 75%;
     }
 
-    @include main.respond(xl) {
-      font-size: 56.25%;
-    }
-
     @include main.respond(lg) {
-      font-size: 52%;
+      font-size: 56.25%;
     }
 
     @include main.respond(md) {
