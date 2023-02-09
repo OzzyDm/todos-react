@@ -1,8 +1,9 @@
 @use "../../styles/main.scss";
 
 .section {
-  display: flex;
+  @include main.center;
   margin-bottom: 3rem;
+  gap: 2rem;
 }
 
 .button {
@@ -10,6 +11,7 @@
 
   &:checked + label {
     color: main.$color-tertiary-light;
+    transform: translateY(-0.3rem);
   }
 }
 
@@ -20,11 +22,9 @@
   color: main.$color-secondary;
   transition: all 0.2s;
 
-  &:not(:last-child) {
-    padding-right: 2rem;
-  }
-
-  &:hover {
-    transform: translateY(-0.3rem);
+  @media (hover: hover) {
+    &:hover {
+      transform: translateY(-0.3rem);
+    }
   }
 }
