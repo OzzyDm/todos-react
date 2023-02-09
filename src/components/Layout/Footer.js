@@ -1,3 +1,5 @@
+import { BsSuitHeartFill } from "react-icons/bs";
+
 import styles from "./Footer.module.scss";
 
 function Footer() {
@@ -22,7 +24,10 @@ function Footer() {
         </a>
       </span>
       <span>
-        Made with <span className={styles.heart}>&#10084;&#xFE0E;</span>
+        Made with{" "}
+        <span className={styles.heart}>
+          <BsSuitHeartFill />
+        </span>
       </span>
     </footer>
   );
