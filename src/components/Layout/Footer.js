@@ -22,7 +22,7 @@ function Footer() {
         </a>
       </span>
       <span>
-        Made with <span className={styles.heart}>&#10084;</span>
+        Made with <span className={styles.heart}>&#10084;&#xFE0E;</span>
       </span>
     </footer>
   );
